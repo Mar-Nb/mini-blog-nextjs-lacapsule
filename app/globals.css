@@ -1,33 +1,63 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import '~bulma/css/bulma.css';
 
 :root {
   --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --background: #404040;
+  --secondary-bg: #202020;
+  --color: #fefefe;
+  --light-orange-primary: orange;
+  --orange-primary: darkorange;
+  --dark-orange-primary: chocolate;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
+/* @media (prefers-color-scheme: dark) {
+
+} */
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background-color: var(--background);
+  color: var(--color);
+  min-height: 100vh;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.content h1,
+.content h2,
+.content h3,
+.content h4,
+.content h5,
+.content h6,
+strong,
+.label {
+  color: var(--color);
+}
+
+.footer {
+  background-color: var(--secondary-bg);
+}
+
+.navbar,
+.hero .navbar,
+.navbar-menu {
+  background-color: var(--secondary-bg);
+}
+
+.input,
+.textarea {
+  color: var(--color);
+  background-color: var(--secondary-bg);
+}
+
+.input::placeholder {
+  color: lightgrey;
+}
+
+.input:focus, .textarea:focus {
+  border-color: var(--light-orange-primary);
+}
+
+.button {
+  color: var(--color);
 }

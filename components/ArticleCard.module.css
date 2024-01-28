@@ -1,0 +1,28 @@
+.header {
+  background-color: var(--secondary-bg);
+}
+
+.title {
+  color: var(--color);
+}
+
+.footer {
+  background-color: var(--light-orange-primary);
+  color: var(--color);
+}
+
+.footer:hover {
+  transition: 150ms;
+  background-color: var(--orange-primary);
+  font-weight: bold;
+}
+
+.footerLink:hover {
+  transition: 250ms;
+  color: var(--color);
+}
+
+.time {
+  font-style: italic;
+  opacity: 0.7;
+}

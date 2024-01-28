@@ -1,0 +1,15 @@
+button.new {
+  background-color: var(--orange-primary);
+  border-color: var(--dark-orange-primary);
+}
+
+button.new:disabled {
+  background-color: var(--dark-orange-primary);
+}
+
+button.new:hover {
+  transition: 150ms;
+  background-color: var(--dark-orange-primary);
+  border-color: var(--orange-primary);
+  color: var(--color);
+}

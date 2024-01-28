@@ -1,0 +1,17 @@
+.separator {
+  border-top: 2px solid var(--light-orange-primary);
+  margin-top: 8px;
+  margin-bottom: 16px;
+}
+
+.return {
+  background-color: var(--orange-primary);
+  border-color: var(--orange-primary);
+}
+
+.return:hover {
+  transition: 150ms;
+  color: var(--color);
+  background-color: var(--dark-orange-primary);
+  border-color: var(--orange-primary);
+}
