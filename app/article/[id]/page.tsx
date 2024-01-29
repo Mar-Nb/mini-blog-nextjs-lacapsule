@@ -4,13 +4,17 @@ import { Navbar } from '@/components/Navbar';
 import { Article } from '@/types/Article';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowCircleLeft } from '@fortawesome/free-solid-svg-icons';
+import { Footer } from '@/components/Footer';
+
+import styles from './page.module.css';
+import Image from 'next/image';
 import ReactMarkdown from 'react-markdown';
 import gfm from 'remark-gfm';
 import math from 'remark-math';
-import Image from 'next/image';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowCircleLeft } from '@fortawesome/free-solid-svg-icons';
-import styles from './page.module.css';
+import gemoji from 'remark-gemoji';
+import breaks from 'remark-breaks';
 
 // Getting the id in the params passed to the page
 export default function Article({ params }: { params: { id: string } }) {
@@ -74,7 +78,7 @@ export default function Article({ params }: { params: { id: string } }) {
                 <span className="italic">{date}</span>
                 <div className={styles.separator} />
                 <span className="is-size-2">{article.title}</span>
-                <ReactMarkdown remarkPlugins={[gfm, math]}>
+                <ReactMarkdown remarkPlugins={[gfm, math, gemoji, breaks]}>
                   {article.body}
                 </ReactMarkdown>
               </>
@@ -91,6 +95,7 @@ export default function Article({ params }: { params: { id: string } }) {
               </div>
             )}
           </div>
+
           <div className="flex justify-end">
             <div className="field has-addons">
               <p className="control">
@@ -111,11 +116,7 @@ export default function Article({ params }: { params: { id: string } }) {
         </section>
       </main>
 
-      <footer className="footer">
-        <div className="content has-text-centered">
-          <p>Made By DaWhistler - Projet La Capsule 2023</p>
-        </div>
-      </footer>
+      <Footer />
     </>
   );
 }
