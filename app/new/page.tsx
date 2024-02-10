@@ -1,6 +1,6 @@
-import { MarkdownEditor } from '@/components/MarkdownEditor';
-import { Navbar } from '@/components/Navbar';
-import { Footer } from '@/components/Footer';
+import { MarkdownEditor } from "@/components/MarkdownEditor";
+import { Navbar } from "@/components/Navbar";
+import { Footer } from "@/components/Footer";
 
 export default function newArticle() {
   return (

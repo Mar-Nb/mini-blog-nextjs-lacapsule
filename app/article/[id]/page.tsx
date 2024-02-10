@@ -1,20 +1,20 @@
-'use client';
+"use client";
 
-import { Navbar } from '@/components/Navbar';
-import { Article } from '@/types/Article';
-import { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowCircleLeft } from '@fortawesome/free-solid-svg-icons';
-import { Footer } from '@/components/Footer';
+import { Navbar } from "@/components/Navbar";
+import { Article } from "@/types/Article";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowCircleLeft } from "@fortawesome/free-solid-svg-icons";
+import { Footer } from "@/components/Footer";
 
-import styles from './page.module.css';
-import Image from 'next/image';
-import ReactMarkdown from 'react-markdown';
-import gfm from 'remark-gfm';
-import math from 'remark-math';
-import gemoji from 'remark-gemoji';
-import breaks from 'remark-breaks';
+import styles from "./page.module.css";
+import Image from "next/image";
+import ReactMarkdown from "react-markdown";
+import gfm from "remark-gfm";
+import math from "remark-math";
+import gemoji from "remark-gemoji";
+import breaks from "remark-breaks";
 
 // Getting the id in the params passed to the page
 export default function Article({ params }: { params: { id: string } }) {
@@ -23,13 +23,13 @@ export default function Article({ params }: { params: { id: string } }) {
   let date;
 
   if (article) {
-    date = new Intl.DateTimeFormat('fr-FR', {
-      weekday: 'short',
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric',
-      hour: 'numeric',
-      minute: 'numeric'
+    date = new Intl.DateTimeFormat("fr-FR", {
+      weekday: "short",
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+      hour: "numeric",
+      minute: "numeric",
     }).format(new Date(article.createdAt));
   }
 
@@ -41,11 +41,11 @@ export default function Article({ params }: { params: { id: string } }) {
         response = await fetch(
           `${process.env.NEXT_PUBLIC_BASE_URL}/api/${params.id}`,
           {
-            method: 'GET',
+            method: "GET",
             headers: {
-              'Content-Type': 'application/json'
-            }
-          }
+              "Content-Type": "application/json",
+            },
+          },
         );
 
         response = await response.json();
@@ -53,12 +53,12 @@ export default function Article({ params }: { params: { id: string } }) {
       } catch (error) {
         console.log(error);
         setArticle({
-          title: 'Error',
-          body: 'An error has occured',
+          title: "Error",
+          body: "An error has occured",
           id: 0,
-          img: '',
-          description: '',
-          createdAt: ''
+          img: "",
+          description: "",
+          createdAt: "",
         });
       }
     })();
@@ -101,7 +101,7 @@ export default function Article({ params }: { params: { id: string } }) {
               <p className="control">
                 <button
                   className={`button ${styles.return}`}
-                  onClick={() => router.push('/')}
+                  onClick={() => router.push("/")}
                 >
                   <span className="icon is-small">
                     <FontAwesomeIcon icon={faArrowCircleLeft} />

@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { usePathname, useRouter } from 'next/navigation';
-import { useState } from 'react';
-import Image from 'next/image';
-import styles from './Navbar.module.css';
+import { usePathname, useRouter } from "next/navigation";
+import { useState } from "react";
+import Image from "next/image";
+import styles from "./Navbar.module.css";
 
 export function Navbar() {
   const [isActive, setIsActive] = useState(false);
@@ -24,7 +24,7 @@ export function Navbar() {
 
         <a
           role="button"
-          className={`navbar-burger ${isActive ? 'is-active' : ''}`}
+          className={`navbar-burger ${isActive ? "is-active" : ""}`}
           aria-label="menu"
           aria-expanded="false"
           data-target="navbarBasicExample"
@@ -38,23 +38,23 @@ export function Navbar() {
 
       <div
         id="navbarBasicExample"
-        className={`navbar-menu ${isActive ? 'is-active' : ''}`}
+        className={`navbar-menu ${isActive ? "is-active" : ""}`}
       >
         <div className="navbar-end">
           <div className="navbar-item">
             <div className="buttons">
               <button
                 className={`button bg-gray-600 ${
-                  !currentPath.includes('new') ? 'is-hidden' : ''
+                  !currentPath.includes("new") ? "is-hidden" : ""
                 }`}
-                onClick={() => router.push('/')}
+                onClick={() => router.push("/")}
               >
                 <strong className="!text-[#fefefe]">Annuler</strong>
               </button>
               <button
                 className={`button ${styles.new}`}
-                disabled={currentPath.includes('new')}
-                onClick={() => router.push('/new')}
+                disabled={currentPath.includes("new")}
+                onClick={() => router.push("/new")}
               >
                 <strong>Nouvel article</strong>
               </button>

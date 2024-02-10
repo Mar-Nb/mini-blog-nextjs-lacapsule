@@ -1,12 +1,12 @@
-import { CardProps } from '@/types/CardProps';
-import styles from './ArticleCard.module.css';
+import { CardProps } from "@/types/CardProps";
+import styles from "./ArticleCard.module.css";
 
 export function ArticleCard(props: CardProps) {
-  const cardDate = new Intl.DateTimeFormat('fr-FR', {
-    weekday: 'short',
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric'
+  const cardDate = new Intl.DateTimeFormat("fr-FR", {
+    weekday: "short",
+    year: "numeric",
+    month: "short",
+    day: "numeric",
   }).format(new Date(props.createdAt));
 
   return (

@@ -1,7 +1,7 @@
-import { ArticlesList } from '@/components/ArticlesList';
-import styles from './page.module.css';
-import { Navbar } from '@/components/Navbar';
-import { Footer } from '@/components/Footer';
+import { ArticlesList } from "@/components/ArticlesList";
+import styles from "./page.module.css";
+import { Navbar } from "@/components/Navbar";
+import { Footer } from "@/components/Footer";
 
 export default function Home() {
   return (

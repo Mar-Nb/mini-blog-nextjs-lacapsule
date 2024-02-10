@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
-import { ArticleCard } from './ArticleCard';
-import { Article } from '@/types/Article';
-import Image from 'next/image';
+import { useEffect, useState } from "react";
+import { ArticleCard } from "./ArticleCard";
+import { Article } from "@/types/Article";
+import Image from "next/image";
 
 export function ArticlesList() {
   const [list, setList] = useState<Article[]>();
@@ -11,10 +11,10 @@ export function ArticlesList() {
   // Fetching all the articles
   useEffect(() => {
     fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api`, {
-      method: 'GET',
+      method: "GET",
       headers: {
-        'Content-Type': 'application/json'
-      }
+        "Content-Type": "application/json",
+      },
     })
       .then((res) => res.json())
       .then((data) => {
@@ -46,7 +46,7 @@ export function ArticlesList() {
               width={200}
               height={200}
               alt="Loading spinner"
-              style={{ margin: '0 auto' }}
+              style={{ margin: "0 auto" }}
             />
           </div>
         )}

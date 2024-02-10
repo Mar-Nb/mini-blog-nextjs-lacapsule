@@ -1,7 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import '~bulma/css/bulma.css';
+@import "~bulma/css/bulma.css";
 
 :root {
   --foreground-rgb: 0, 0, 0;
@@ -54,7 +54,8 @@ strong,
   color: lightgrey;
 }
 
-.input:focus, .textarea:focus {
+.input:focus,
+.textarea:focus {
   border-color: var(--light-orange-primary);
 }
 
