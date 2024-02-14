@@ -50,7 +50,8 @@ strong,
   background-color: var(--secondary-bg);
 }
 
-.input::placeholder {
+.input::placeholder,
+.textarea::placeholder {
   color: lightgrey;
 }
 

@@ -7,6 +7,7 @@ import { useState } from "react";
 export function MarkdownEditor() {
   const [text, setText] = useState("");
   const [title, setTitle] = useState("");
+  const [desc, setDesc] = useState("");
   const router = useRouter();
 
   async function publish() {
@@ -19,16 +20,19 @@ export function MarkdownEditor() {
       "'": "&apos;",
     };
 
-    const sanitizedTitle = title.replace(/[&<>\"\']/g, function (m) {
-      return entities[m];
-    });
-    const sanitizedBody = text.replace(/[&<>\"\']/g, function (m) {
-      return entities[m];
-    });
+    const sanitizer = (str: string) => {
+      return str.replace(/[&<>\"\']/g, function (m) {
+        return entities[m];
+      });
+    };
 
     await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/new`, {
       method: "POST",
-      body: JSON.stringify({ title: sanitizedTitle, body: sanitizedBody }),
+      body: JSON.stringify({
+        title: sanitizer(title),
+        body: sanitizer(text),
+        description: sanitizer(desc),
+      }),
       headers: {
         "Content-Type": "application/json",
       },
@@ -47,9 +51,7 @@ export function MarkdownEditor() {
             <p>Prévisualisation de l&apos;article</p>
           </div>
           <div className="message-body has-text-white">
-            <div className="content">
-              {previewText}
-            </div>
+            <div className="content">{previewText}</div>
           </div>
         </article>
       </div>
@@ -72,6 +74,24 @@ export function MarkdownEditor() {
             </div>
           </div>
         </div>
+        <div className="field is-horizontal">
+          <div className="field-label is-normal">
+            <label className="label">Courte description</label>
+          </div>
+          <div className="field-body">
+            <div className="field">
+              <div className="control">
+                <textarea
+                  className="textarea"
+                  value={desc}
+                  onChange={(e) => setDesc(e.target.value)}
+                  placeholder="Une courte description de l'article"
+                  maxLength={150}
+                ></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
         <textarea
           className="textarea h-[60vh]"
           value={text}
@@ -83,7 +103,7 @@ export function MarkdownEditor() {
             backgroundColor: "var(--orange-primary)",
           }}
           onClick={publish}
-          disabled={!text.length || !title.length}
+          disabled={!text.length || !title.length || !desc.length}
         >
           <strong>Publier</strong>
         </button>

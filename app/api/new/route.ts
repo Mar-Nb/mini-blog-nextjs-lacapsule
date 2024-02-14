@@ -18,7 +18,7 @@ export async function POST(req: Request) {
 
   try {
     db.run(
-      "INSERT INTO articles(title, body) VALUES(?, ?)",
+      "INSERT INTO articles(title, body, description, createdAt) VALUES(?, ?, ?, DATE('now'))",
       Object.values(newArticle),
     );
   } catch (error) {

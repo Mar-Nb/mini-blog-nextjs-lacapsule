@@ -1,16 +1,16 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const sqlite3 = require('sqlite3').verbose();
+const sqlite3 = require("sqlite3").verbose();
 
 // Connecting to or creating a new SQLite database file
 const db = new sqlite3.Database(
-  'collection.db',
+  "collection.db",
   sqlite3.OPEN_READWRITE | sqlite3.OPEN_CREATE,
   (err: Error | null) => {
     if (err) {
       return console.error(err.message);
     }
-    console.log('Connected to the SQlite database.');
-  }
+    console.log("Connected to the SQlite database.");
+  },
 );
 
 // Serialize method ensures that database queries are executed sequentially
@@ -26,27 +26,27 @@ db.serialize(() => {
       if (err) {
         return console.error(err.message);
       }
-      console.log('Created articles table.');
+      console.log("Created articles table.");
 
       // Clear the existing data in the products table
       db.run(`DELETE FROM articles`, (err: Error) => {
         if (err) {
           return console.error(err.message);
         }
-        console.log('All rows deleted from articles');
+        console.log("All rows deleted from articles");
 
         // Insert new data into the products table
         const values1 = [
-          'Article 1',
-          '# Le premier\nLe premier est toujours **sympa**.'
+          "Article 1",
+          "# Le premier\nLe premier est toujours **sympa**.",
         ];
         const values2 = [
-          'Article 2',
-          '# Le deuxième\nLe deuxième *n&apos;est jamais très loin*.'
+          "Article 2",
+          "# Le deuxième\nLe deuxième *n&apos;est jamais très loin*.",
         ];
         const values3 = [
-          'Article 3',
-          '# Le troisème\nLe `troisième` est toujours le bon.'
+          "Article 3",
+          "# Le troisème\nLe `troisième` est toujours le bon.",
         ];
 
         const insertSql = `INSERT INTO articles(title, body) VALUES(?, ?)`;
@@ -60,7 +60,7 @@ db.serialize(() => {
             }
             const id = this.lastID; // get the id of the last inserted row
             console.log(`Rows inserted, ID ${id}`);
-          }
+          },
         );
 
         db.run(
@@ -72,7 +72,7 @@ db.serialize(() => {
             }
             const id = this.lastID; // get the id of the last inserted row
             console.log(`Rows inserted, ID ${id}`);
-          }
+          },
         );
 
         db.run(
@@ -84,7 +84,7 @@ db.serialize(() => {
             }
             const id = this.lastID; // get the id of the last inserted row
             console.log(`Rows inserted, ID ${id}`);
-          }
+          },
         );
 
         //   Close the database connection after all insertions are done
@@ -92,9 +92,9 @@ db.serialize(() => {
           if (err) {
             return console.error(err.message);
           }
-          console.log('Closed the database connection.');
+          console.log("Closed the database connection.");
         });
       });
-    }
+    },
   );
 });

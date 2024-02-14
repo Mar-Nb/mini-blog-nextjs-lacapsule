@@ -10,11 +10,7 @@ import { Footer } from "@/components/Footer";
 
 import styles from "./page.module.css";
 import Image from "next/image";
-import ReactMarkdown from "react-markdown";
-import gfm from "remark-gfm";
-import math from "remark-math";
-import gemoji from "remark-gemoji";
-import breaks from "remark-breaks";
+import useMarkdown from "@/hooks/useMarkdown";
 
 // Getting the id in the params passed to the page
 export default function Article({ params }: { params: { id: string } }) {
@@ -66,6 +62,8 @@ export default function Article({ params }: { params: { id: string } }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const articleContent = useMarkdown(article?.body || "");
+
   return (
     <>
       <Navbar />
@@ -78,9 +76,7 @@ export default function Article({ params }: { params: { id: string } }) {
                 <span className="italic">{date}</span>
                 <div className={styles.separator} />
                 <span className="is-size-2">{article.title}</span>
-                <ReactMarkdown remarkPlugins={[gfm, math, gemoji, breaks]}>
-                  {article.body}
-                </ReactMarkdown>
+                {articleContent}
               </>
             )}
 
