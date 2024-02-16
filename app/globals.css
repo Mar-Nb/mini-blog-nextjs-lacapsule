@@ -11,6 +11,7 @@
   --light-orange-primary: orange;
   --orange-primary: darkorange;
   --dark-orange-primary: chocolate;
+  --transition: 200ms;
 }
 
 /* @media (prefers-color-scheme: dark) {
@@ -62,4 +63,31 @@ strong,
 
 .button {
   color: var(--color);
+}
+
+.pagination-link {
+  background-color: var(--light-orange-primary);
+  border-color: var(--light-orange-primary);
+  color: var(--color);
+}
+
+.pagination-link:hover {
+  background-color: var(--dark-orange-primary) !important;
+  border-color: var(--dark-orange-primary) !important;
+  transition: var(--transition);
+}
+
+.pagination-link.is-current {
+  background-color: var(--orange-primary);
+  border-color: var(--orange-primary);
+}
+
+.pagination-previous, .pagination-next {
+  background-color: white;
+}
+
+.pagination-previous:hover, .pagination-next:hover {
+  background-color: var(--light-orange-primary);
+  color: var(--color);
+  transition: var(--transition);
 }

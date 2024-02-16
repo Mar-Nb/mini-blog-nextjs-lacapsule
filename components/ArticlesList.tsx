@@ -4,9 +4,12 @@ import { useEffect, useState } from "react";
 import { ArticleCard } from "./ArticleCard";
 import { Article } from "@/types/Article";
 import Image from "next/image";
+import Pagination from "./Pagination";
 
 export function ArticlesList() {
   const [list, setList] = useState<Article[]>();
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [totalPages, setTotalPages] = useState<number>(1);
 
   // Fetching all the articles
   useEffect(() => {
@@ -23,13 +26,15 @@ export function ArticlesList() {
       .catch((error) => console.error(error));
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [currentPage]);
+
+  const handlePageChange = (page: number) => {};
 
   return (
     <>
       <h2 className="is-size-3 mb-4">Les articles</h2>
 
-      <div className="columns is-multiline">
+      <div className="columns is-multiline mb-4">
         {list &&
           list.map((article: Article, i) => {
             return (
@@ -51,6 +56,12 @@ export function ArticlesList() {
           </div>
         )}
       </div>
+
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={handlePageChange}
+      />
     </>
   );
 }
