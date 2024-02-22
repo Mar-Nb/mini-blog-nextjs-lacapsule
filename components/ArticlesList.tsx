@@ -11,9 +11,9 @@ export function ArticlesList() {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [totalPages, setTotalPages] = useState<number>(1);
 
-  // Fetching all the articles
+  // Fetching articles
   useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api`, {
+    fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api?page=${currentPage}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -21,14 +21,17 @@ export function ArticlesList() {
     })
       .then((res) => res.json())
       .then((data) => {
-        setList(data);
+        setList(data.articles);
+        setTotalPages(data.totalPages);
       })
       .catch((error) => console.error(error));
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentPage]);
 
-  const handlePageChange = (page: number) => {};
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+  };
 
   return (
     <>

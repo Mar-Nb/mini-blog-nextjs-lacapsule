@@ -14,10 +14,6 @@
   --transition: 200ms;
 }
 
-/* @media (prefers-color-scheme: dark) {
-
-} */
-
 body {
   background-color: var(--background);
   color: var(--color);
@@ -71,7 +67,13 @@ strong,
   color: var(--color);
 }
 
-.pagination-link:hover {
+.pagination-link.is-total {
+  cursor: not-allowed;
+  color: var(--color) !important;
+  border-color: var(--light-orange-primary) !important;
+}
+
+.pagination-link:hover:not(.is-total) {
   background-color: var(--dark-orange-primary) !important;
   border-color: var(--dark-orange-primary) !important;
   transition: var(--transition);
@@ -82,12 +84,33 @@ strong,
   border-color: var(--orange-primary);
 }
 
-.pagination-previous, .pagination-next {
+.pagination-previous,
+.pagination-next {
   background-color: white;
 }
 
-.pagination-previous:hover, .pagination-next:hover {
+.pagination-previous.is-disabled,
+.pagination-next.is-disabled {
+  cursor: not-allowed;
+}
+
+.pagination-previous:not(.is-disabled):hover,
+.pagination-next:not(.is-disabled):hover {
   background-color: var(--light-orange-primary);
   color: var(--color);
   transition: var(--transition);
+}
+
+.modal-content .box {
+  background-color: var(--background);
+}
+
+.modal .button {
+  background-color: var(--secondary-bg);
+  font-weight: bold;
+  border-color: var(--light-orange-primary);
+}
+
+.modal .button:hover {
+  color: var(--orange-primary);
 }
