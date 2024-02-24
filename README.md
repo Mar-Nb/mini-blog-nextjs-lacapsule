@@ -1,36 +1,42 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+# La Capsule, projet n°2 : Custom Hook
 
-First, run the development server:
+Ce projet [Next.js](https://nextjs.org/) est basé sur le template de la commande [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Il utilise [next/font](https://nextjs.org/docs/basic-features/font-optimization) pour automatiquement optimiser et charger la police **Inter**, une police de Google Font.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Objectif: Créer un mini blog dont les articles sont écrits en Markdown, avec une prévisualisation du rendu de l'article.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Auteur(s)
 
-## Learn More
+- [@Mar-Nb](https://www.github.com/Mar-Nb)
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Capture d'écran
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+![App Screenshot](public/screenshot.png)
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Technologies utilisées
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+**Client:** Next.js 13, Typescript, Bulma, Font Awesome
+
+**Base de données**: SQLite
+
+**Outils externes**: Cloudinary
+
+**Bibliothèques**: React Markdown, Remark Gemoji, Remark Breaks, Remark Gfm, Remark Math
+
+
+## Fonctionnalités
+
+- Création d'articles en Markdown
+- Prise en charge de fonctionnalités Markdown étendues (*Github Flavoured Markdown*, émoji, saut de ligne, notation mathématique)
+- Prévisualisation du rendu de l'article
+- Liste d'article paginée
+
+## Démo
+
+Le projet est déployé sur Vercel à l'adresse suivante : <https://mini-blog-nextjs-lacapsule.vercel.app/>
+
